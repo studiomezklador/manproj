@@ -31,7 +31,22 @@ class TaskController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// New row in database
+		$task = new Task;
+		// data injections
+		$task->project = 1;
+		$task->name = Input::get('task_title');
+		$task->user = 1;
+		$task->description = Input::get('task_desc');
+		$task->state = Input::get('task_state');
+		$task->duration = Input::get('task_duration');
+		$task->state = Input::get('task_state');
+		$task->complete = Input::get('task_complete');
+		// then save into database
+		$task->save();
+
+		// redirection to index
+		return Redirect::route('task.index');
 	}
 
 

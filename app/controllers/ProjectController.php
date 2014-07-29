@@ -9,7 +9,8 @@ class ProjectController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('project.index');
+		$projects = Project::all();
+		return View::make('project.index',compact('projects'));
 	}
 
 
@@ -31,7 +32,18 @@ class ProjectController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// New row in database
+		$project = new Project;
+		// data injections
+		$project->name = Input::get('project_title');
+		$project->user = 1;
+		$project->description = Input::get('project_desc');
+		$project->state = Input::get('project_state');
+		// then save into database
+		$project->save();
+
+		// redirection to index
+		return Redirect::route('project.index');
 	}
 
 
