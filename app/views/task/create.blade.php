@@ -6,7 +6,7 @@
 
 @section('contenu')
 	<h1>Créer une nouvelle Tâche</h1>
-	{{ Form::open(['routes' => 'task.index', 'method' => 'post']) }}
+	{{ Form::open(['route' => 'task.store', 'method' => 'post']) }}
 		<div class="form-group">
 			<h3>Titre de la tâche</h3>
 			{{ Form::text('task_title', null, ['class' => 'form-control']) }}

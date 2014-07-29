@@ -9,7 +9,8 @@ class TaskController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('task.index');
+		$tasks = Task::all();
+		return View::make('task.index',compact('tasks'));
 	}
 
 
@@ -35,18 +36,21 @@ class TaskController extends \BaseController {
 		$task = new Task;
 		// data injections
 		$task->project = 1;
-		$task->name = Input::get('task_title');
+		$task->title = Input::get('task_title');
 		$task->user = 1;
 		$task->description = Input::get('task_desc');
 		$task->state = Input::get('task_state');
 		$task->duration = Input::get('task_duration');
 		$task->state = Input::get('task_state');
-		$task->complete = Input::get('task_complete');
+		if (!Input::get('task_complete')) {
+			$complete = false;
+		} else {$complete = true;}
+		$task->complete = $complete;
 		// then save into database
 		$task->save();
 
 		// redirection to index
-		return Redirect::route('task.index');
+		return Redirect::route('task.index')->withMessage('Tâche créée avec succès !');
 	}
 
 

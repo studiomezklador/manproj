@@ -8,7 +8,8 @@
 	<h1>Toutes les Tâches</h1>
 		@foreach ($tasks as $task)
 		<dl>
-			<h4>{{ $task->name }}</h4>
+			<h4>{{ $task->title }}</h4>
+			<p>Durée : {{ $task->duration }}</p>
 			<dt>{{ $task->state }}</dt>
 			<dd>
 			<?php // TRIM 20 WORDS ?>

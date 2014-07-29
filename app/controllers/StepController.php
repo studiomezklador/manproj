@@ -9,7 +9,8 @@ class StepController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('step.index');
+		$steps = Step::all();
+		return View::make('step.index',compact('steps'));
 	}
 
 
@@ -31,7 +32,17 @@ class StepController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$step = new Step;
+
+		$step->task = 1;
+		$step->user = 1;
+		$step->title = Input::get('step_title');
+		$step->report = Input::get('step_report');
+		$step->duration = Input::get('step_duration');
+
+		$step->save();
+
+		return Redirect::route('step.index')->withMessage('Étapes créée avec succès !');
 	}
 
 

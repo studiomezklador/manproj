@@ -5,8 +5,8 @@
 @stop
 
 @section('contenu')
-	<h1>Créer une nouvelle Étape</h1>
-	{{ Form::open(['routes' => 'step.index', 'method' => 'post']) }}
+	<h1>Créer une nouvelle étape</h1>
+	{{ Form::open(['route' => 'step.store', 'method' => 'post']) }}
 
 		<div class="form-group">
 			<h3>Intitulé de l'étape</h3>
