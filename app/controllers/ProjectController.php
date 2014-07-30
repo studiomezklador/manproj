@@ -55,7 +55,8 @@ class ProjectController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return View::make('project.show');
+		$out = Project::where('id', '=',$id)->first();
+		return View::make('project.show', compact('out'));
 	}
 
 
@@ -67,7 +68,8 @@ class ProjectController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		return View::make('project.edit');
+		$out = Project::where('id', '=',$id)->first();
+		return View::make('project.edit', compact('out'));
 	}
 
 
@@ -79,7 +81,11 @@ class ProjectController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$upto = Project::findOrFail($id);
+
+		$upto->update(Input::all());
+
+		return Redirect::back();
 	}
 
 

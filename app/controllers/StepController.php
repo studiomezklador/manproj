@@ -54,7 +54,8 @@ class StepController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return View::make('step.show');
+		$out = Step::where('id', '=',$id)->first();
+		return View::make('step.show', compact('out'));
 	}
 
 
@@ -66,7 +67,8 @@ class StepController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		return View::make('step.edit');
+		$out = Step::where('id', '=',$id)->first();
+		return View::make('step.edit', compact('out'));
 	}
 
 
@@ -78,7 +80,11 @@ class StepController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$upto = Step::findOrFail($id);
+
+		$upto->update(Input::all());
+
+		return Redirect::back();
 	}
 
 

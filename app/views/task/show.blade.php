@@ -1,9 +1,18 @@
 @extends('layouts.default')
 
 @section('entete')
-	Tâche blablabla
+	Tâche : {{ $out->title }}
 @stop
 
 @section('contenu')
-	<h1>Tâche</h1>
+	<h3>Progrès = {{ $out->state }}</h3>
+	<p>Durée : {{ $out->duration }}</p>
+	<p>{{ $out->description }}</p>
+	<hr />
+	<p>Créée par <strong>{{ $out->user }}</strong>, le {{ $out->created_at }}</p>
+	<p>Modifiée le {{ $out->updated_at }}</p>
+	@if ($out->complete)
+		<p>Tâche terminée !</p>
+	@endif
+
 @stop

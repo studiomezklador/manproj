@@ -62,7 +62,8 @@ class TaskController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return View::make('task.show');
+		$out = Task::where('id', '=',$id)->first();
+		return View::make('task.show', compact('out'));
 	}
 
 
@@ -74,7 +75,8 @@ class TaskController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		return View::make('task.edit');
+		$out = Task::where('id', '=',$id)->first();
+		return View::make('task.edit', compact('out'));
 	}
 
 
@@ -86,7 +88,11 @@ class TaskController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$upto = Task::findOrFail($id);
+
+		$upto->update(Input::all());
+
+		return Redirect::back();
 	}
 
 

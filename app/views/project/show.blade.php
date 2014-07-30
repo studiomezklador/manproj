@@ -1,9 +1,13 @@
 @extends('layouts.default')
 
 @section('entete')
-	Projet blablabla
+	Projet : {{ $out->name }}
 @stop
 
 @section('contenu')
-	<h1>Projet</h1>
+	<h3>Progrès = {{ $out->state }}</h3>
+	<p>{{ $out->description }}</p>
+	<p>Créé par <strong>{{ $out->user }}</strong>, le {{ $out->created_at }}</p>
+	<p>Dernière modification : {{ $out->updated_at }}</p>
+
 @stop
