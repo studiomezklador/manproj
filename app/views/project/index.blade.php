@@ -5,17 +5,26 @@
 @stop
 
 @section('contenu')
-	<h1>Tous les Projets</h1>
 
-	@foreach ($projects as $project)
-		<dl>
-			<h4>{{ $project->name }}</h4>
-			<dt>{{ $project->state }}</dt>
-			<dd>
-			<?php // TRIM 20 WORDS ?>
-			<?= implode(' ', array_slice(explode(' ', $project->description), 0, 20)).'...'; ?>
-			</dd>
-		</dl>
-	@endforeach
+	@if($projects)
 
+		<h1>Tous les Projets</h1>
+
+		@foreach ($projects as $project)
+			<dl>
+				<h4>{{ $project->name }}</h4>
+				<dt>
+					<p>Avancée du projet = {{ $project->state }}</p>
+				</dt>
+				<dd>
+				{{ Str::words($project->description, 20) }}
+				</dd>
+			</dl>
+		@endforeach
+
+	@else
+		<h1>Désolé...</h1>
+		<p>Aucun projet en cours, pour le moment...</p>
+	@endif
+	<!-- <pre><code>{{ $projects }}</code></pre> -->
 @stop

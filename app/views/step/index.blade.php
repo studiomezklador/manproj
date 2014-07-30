@@ -9,10 +9,11 @@
 	@foreach ($steps as $step)
 		<dl>
 			<h4>{{ $step->title }}</h4>
-			<p>Durée : {{ $step->duration }}</p>
+			<p>Reliée à la tâche {{ $step->task_id }}</p>
+			<p>Durée réelle : {{ $step->duration }}</p>
 			<dd>
 			<?php // TRIM 20 WORDS ?>
-			<?= implode(' ', array_slice(explode(' ', $step->report), 0, 20)).'...'; ?>
+			{{ Str::words($step->report, 20) }}
 			</dd>
 		</dl>
 	@endforeach

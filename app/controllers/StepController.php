@@ -34,8 +34,8 @@ class StepController extends \BaseController {
 	{
 		$step = new Step;
 
-		$step->task = 1;
-		$step->user = 1;
+		$step->task_id = 1;
+		$step->user_id = 1;
 		$step->title = Input::get('step_title');
 		$step->report = Input::get('step_report');
 		$step->duration = Input::get('step_duration');

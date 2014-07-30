@@ -15,9 +15,9 @@ class CreateTaskBoard extends Migration {
 		Schema::create('task', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('project');
+			$table->integer('project_id');
+			$table->integer('user_id');
 			$table->string('title');
-			$table->integer('user');
 			$table->text('description');
 			$table->time('duration');
 			$table->integer('state')->nullable();

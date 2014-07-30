@@ -16,7 +16,7 @@ class CreateProjectBoard extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name');
-			$table->integer('user');
+			$table->integer('user_id');
 			$table->text('description');
 			$table->integer('state')->nullable();
 			$table->timestamps();

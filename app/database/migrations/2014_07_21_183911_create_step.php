@@ -15,8 +15,8 @@ class CreateStep extends Migration {
 		Schema::create('step', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('task');
-			$table->integer('user');
+			$table->integer('task_id');
+			$table->integer('user_id');
 			$table->string('title');
 			$table->text('report');
 			$table->time('duration');

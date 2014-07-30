@@ -35,9 +35,9 @@ class TaskController extends \BaseController {
 		// New row in database
 		$task = new Task;
 		// data injections
-		$task->project = 1;
+		$task->project_id = 1;
 		$task->title = Input::get('task_title');
-		$task->user = 1;
+		$task->user_id = 1;
 		$task->description = Input::get('task_desc');
 		$task->state = Input::get('task_state');
 		$task->duration = Input::get('task_duration');
