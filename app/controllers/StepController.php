@@ -9,7 +9,8 @@ class StepController extends \BaseController {
 	 */
 	public function index()
 	{
-		$steps = Step::all();
+		// $steps = Step::all();
+		$steps = Step::with('task')->get();
 		return View::make('step.index',compact('steps'));
 	}
 

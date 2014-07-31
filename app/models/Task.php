@@ -1,6 +1,8 @@
 
 <?php
 
+use Carbon\Carbon;
+
 class Task extends Eloquent {
 
 	protected $table = 'task';
@@ -16,7 +18,17 @@ class Task extends Eloquent {
 
 	public function project()
 	{
-		return $this->belongsTo('Project', 'project');
+		return $this->belongsTo('Project');
 	}
 
+	// SETTERS
+	public function getCreatedAtAttribute($attr)
+	{
+        return Carbon::parse($attr)->format('d/m/Y à H:i'); //Change the format to whichever you desire
+    }
+
+    public function getUpdatedAtAttribute($attr)
+	{
+        return Carbon::parse($attr)->format('d/m/Y à H:i'); //Change the format to whichever you desire
+    }
 }

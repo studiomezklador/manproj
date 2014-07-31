@@ -9,7 +9,12 @@ class TaskController extends \BaseController {
 	 */
 	public function index()
 	{
-		$tasks = Task::all();
+		// $tasks = Task::all(); <-- récupère toutes les données de la base, sans les liaisons...
+
+		/**
+		* Récupération de toutes les données de la base, avec les relations one->many (steps) et many->one (project)
+		*/
+		$tasks = Task::with('steps', 'project')->get();
 		return View::make('task.index',compact('tasks'));
 	}
 

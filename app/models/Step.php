@@ -1,6 +1,8 @@
 
 <?php
 
+use Carbon\Carbon;
+
 class Step extends Eloquent {
 
 	protected $table = 'step';
@@ -10,7 +12,18 @@ class Step extends Eloquent {
 
 	public function task()
 	{
-		return $this->belongsTo('Task', 'task');
+		return $this->belongsTo('Task');
 	}
+
+	// SETTERS
+	public function getCreatedAtAttribute($attr)
+	{
+        return Carbon::parse($attr)->format('d/m/Y à H:i'); //Change the format to whichever you desire
+    }
+
+    public function getUpdatedAtAttribute($attr)
+	{
+        return Carbon::parse($attr)->format('d/m/Y à H:i'); //Change the format to whichever you desire
+    }
 
 }

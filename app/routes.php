@@ -11,6 +11,15 @@ Route::get('project/{id}/tasks', function($id)
 	});
 
 Route::resource('task', 'TaskController');
+
+// MISE EN PLACE D'UNE VUE POUR LISTER LES TACHES RELIEES AU PROJET
+Route::get('task/{id}/steps', function($id)
+	{
+		$task = Task::find($id);
+		$steps = $task->steps;
+		return View::make('task.steps', compact('task', 'steps'));
+	});
+
 Route::resource('step', 'StepController');
 
 Route::get('/', function()

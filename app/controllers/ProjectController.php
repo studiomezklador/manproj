@@ -9,9 +9,9 @@ class ProjectController extends \BaseController {
 	 */
 	public function index()
 	{
-		$projects = Project::all();
-		$tasks = $projects->tasks();
-		return View::make('project.index', compact('projects', 'tasks'));
+		// $projects = Project::all();
+		$projects = Project::with('tasks')->get();
+		return View::make('project.index', compact('projects'));
 	}
 
 
