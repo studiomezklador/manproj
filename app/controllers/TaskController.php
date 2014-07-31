@@ -67,7 +67,7 @@ class TaskController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$out = Task::where('id', '=',$id)->first();
+		$out = Task::findOrFail($id);
 		return View::make('task.show', compact('out'));
 	}
 

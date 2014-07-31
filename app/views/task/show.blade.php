@@ -6,6 +6,7 @@
 
 @section('contenu')
 	<h3>Progrès = {{ $out->state }}</h3>
+	<h5>Reliée au projet {{ $out->project->name }}</h5>
 	<p>Durée : {{ $out->duration }}</p>
 	<p>{{ $out->description }}</p>
 	<hr />

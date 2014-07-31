@@ -56,7 +56,7 @@ class ProjectController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$out = Project::where('id', '=',$id)->first();
+		$out = Project::findOrFail($id);
 		return View::make('project.show', compact('out'));
 	}
 

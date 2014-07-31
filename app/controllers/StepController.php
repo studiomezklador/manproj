@@ -55,7 +55,7 @@ class StepController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$out = Step::where('id', '=',$id)->first();
+		$out = Step::findOrFail($id);
 		return View::make('step.show', compact('out'));
 	}
 
